@@ -16,7 +16,19 @@ const StreamDetailScreen = () => {
       setStream(data);
     });
 
-    return () => {};
+    const fnc = (message: string) => {
+      console.log('Received message:', message);
+    };
+
+    strimusClient.socket.connect();
+    strimusClient.socket.addMessageListener(fnc);
+    strimusClient.socket.joinRoom(String(params.id));
+
+    return () => {
+      strimusClient.socket.removeMessageListener(fnc);
+      strimusClient.socket.leaveRoom(String(params.id));
+      strimusClient.socket.disconnect();
+    };
   }, [params.id]);
 
   return stream ? (

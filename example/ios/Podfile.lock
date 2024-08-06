@@ -38,11 +38,7 @@ PODS:
   - amazon-ivs-react-native-broadcast (1.2.1):
     - AmazonIVSBroadcast (~> 1.7.1)
     - React-Core
-  - amazon-ivs-react-native-player (1.5.0):
-    - AmazonIVSPlayer (~> 1.23.0)
-    - React-Core
   - AmazonIVSBroadcast (1.7.5)
-  - AmazonIVSPlayer (1.23.0)
   - boost (1.83.0)
   - DoubleConversion (1.1.6)
   - EXConstants (16.0.2):
@@ -1061,9 +1057,6 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-aws-ivs-player-view (0.2.8):
-    - AmazonIVSPlayer (>= 1.2.0)
-    - React-Core
   - react-native-safe-area-context (4.10.5):
     - React-Core
   - react-native-video (6.4.3):
@@ -1388,7 +1381,6 @@ PODS:
 
 DEPENDENCIES:
   - amazon-ivs-react-native-broadcast (from `../node_modules/amazon-ivs-react-native-broadcast`)
-  - amazon-ivs-react-native-player (from `../node_modules/amazon-ivs-react-native-player`)
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
@@ -1431,7 +1423,6 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - react-native-agora (from `../node_modules/react-native-agora`)
-  - react-native-aws-ivs-player-view (from `../node_modules/react-native-aws-ivs-player-view`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-video (from `../node_modules/react-native-video`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
@@ -1467,14 +1458,11 @@ SPEC REPOS:
     - AgoraIrisRTC_iOS
     - AgoraRtcEngine_iOS
     - AmazonIVSBroadcast
-    - AmazonIVSPlayer
     - SocketRocket
 
 EXTERNAL SOURCES:
   amazon-ivs-react-native-broadcast:
     :path: "../node_modules/amazon-ivs-react-native-broadcast"
-  amazon-ivs-react-native-player:
-    :path: "../node_modules/amazon-ivs-react-native-player"
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
   DoubleConversion:
@@ -1556,8 +1544,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   react-native-agora:
     :path: "../node_modules/react-native-agora"
-  react-native-aws-ivs-player-view:
-    :path: "../node_modules/react-native-aws-ivs-player-view"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-video:
@@ -1621,9 +1607,7 @@ SPEC CHECKSUMS:
   AgoraIrisRTC_iOS: 3cb15344a503a1a35ab6d60481732a8beeda98fe
   AgoraRtcEngine_iOS: eaa97751fcfe1b50d9b067e0df92752a6a5f899f
   amazon-ivs-react-native-broadcast: 2ebac8611854d0dbc80dcac8894a06866c9b63c3
-  amazon-ivs-react-native-player: b7a00b9d91f8206b1fa6c85caee17528efbe423c
   AmazonIVSBroadcast: a2461bb29efdfed74a91741930cb39dac1694814
-  AmazonIVSPlayer: 056aa543826328b578f51d5f3a1ac47b227d813d
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   EXConstants: 409690fbfd5afea964e5e9d6c4eb2c2b59222c59
@@ -1664,7 +1648,6 @@ SPEC CHECKSUMS:
   React-logger: fa92ba4d3a5d39ac450f59be2a3cec7b099f0304
   React-Mapbuffer: 9f68550e7c6839d01411ac8896aea5c868eff63a
   react-native-agora: eeafa2f850a8bdd97666bf1eb5d72e46c2cf86ec
-  react-native-aws-ivs-player-view: c36a342f1e981d735cda9de939f38d979e827740
   react-native-safe-area-context: a240ad4b683349e48b1d51fed1611138d1bdad97
   react-native-video: b3ba8f424c8c3f54dd9289d47bbe60fbc09bc986
   React-nativeconfig: fa5de9d8f4dbd5917358f8ad3ad1e08762f01dcb

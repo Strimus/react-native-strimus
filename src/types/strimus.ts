@@ -1,4 +1,5 @@
 import type { ViewStyle } from 'react-native';
+import type { Socket } from 'socket.io-client';
 
 export interface ApiResponse<T> {
   success: boolean;
@@ -104,4 +105,24 @@ export interface StrimusInterface {
     data: StrimusStreamDataInterface
   ) => Promise<any>;
   stopStream: (id: number) => Promise<any>;
+}
+
+export interface StrimusSocketInterface {
+  key: string;
+  messageListeners: Function[];
+  socket: Socket;
+  connect: () => void;
+  disconnect: () => void;
+  createRoom: (
+    roomId: String,
+    roomName: String,
+    userID: String,
+    roomType: String
+  ) => void;
+  joinRoom: (roomId: String) => void;
+  leaveRoom: (roomId: String) => void;
+  sendMessage: (roomId: String, message: String) => void;
+  addMessageListener: (fnc: Function) => void;
+  removeMessageListener: (fnc: Function) => void;
+  _onMessage: (message: any) => void;
 }

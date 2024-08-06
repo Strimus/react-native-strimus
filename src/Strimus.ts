@@ -1,4 +1,5 @@
 import { API_URL } from './config/api';
+import { StrimusSocket } from './StrimusSocket';
 import type {
   StrimusBroadcastInterface,
   StrimusStreamDataInterface,
@@ -12,6 +13,7 @@ export class Strimus implements StrimusInterface {
   key: string = '';
   token: string = '';
   uniqueId: string = '';
+  socket: StrimusSocket;
 
   /**
    * Initialize Strimus
@@ -34,6 +36,7 @@ export class Strimus implements StrimusInterface {
     this.getStream = this.getStream.bind(this);
     this.createStream = this.createStream.bind(this);
     this.stopStream = this.stopStream.bind(this);
+    this.socket = new StrimusSocket(key);
   }
 
   /**
