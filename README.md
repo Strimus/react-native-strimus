@@ -57,6 +57,9 @@ import { Strimus, StrimusPlayer } from 'react-native-strimus';
 // ...
 
 const strimusClient = new Strimus('KEY');
+
+// to access socket
+strimusClient.socket.connect()
 ```
 
 ### StrimusPlayer Props
