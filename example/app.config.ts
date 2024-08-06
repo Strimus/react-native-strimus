@@ -198,7 +198,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   ios: {
     supportsTablet: true,
-    bundleIdentifier: 'strimus.rnexample',
+    bundleIdentifier: 'com.machinarium.strimusrn',
     infoPlist: {
       NSCameraUsageDescription: 'This app uses the camera to take photos.',
       NSMicrophoneUsageDescription:
@@ -210,7 +210,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#ffffff',
     },
-    package: 'strimus.rnexample',
+    package: 'com.machinarium.strimusrn',
     permissions: [
       'android.permission.CAMERA',
       'android.permission.RECORD_AUDIO',

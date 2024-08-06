@@ -83,9 +83,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'strimus.rnexample'
+    namespace 'com.machinarium.strimusrn'
     defaultConfig {
-        applicationId 'strimus.rnexample'
+        applicationId 'com.machinarium.strimusrn'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

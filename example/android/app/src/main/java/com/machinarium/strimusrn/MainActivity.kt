@@ -1,4 +1,4 @@
-package strimus.rnexample
+package com.machinarium.strimusrn
 
 import android.os.Build
 import android.os.Bundle

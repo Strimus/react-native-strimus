@@ -28,7 +28,7 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>myapp</string>
-          <string>strimus.rnexample</string>
+          <string>com.machinarium.strimusrn</string>
         </array>
       </dict>
     </array>
