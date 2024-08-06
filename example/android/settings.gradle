@@ -1,4 +1,4 @@
-rootProject.name = 'example'
+rootProject.name = 'react-native-strimus-example'
 
 dependencyResolutionManagement {
   versionCatalogs {

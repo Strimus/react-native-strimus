@@ -51,14 +51,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ozgursagiroglu/react-native-strimus.git"
+    "url": "git+https://github.com/Strimus/react-native-strimus.git"
   },
   "author": "Machinarium <ozgur.sagiroglu@machinarium.co> (https://machinarium.co)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ozgursagiroglu/react-native-strimus/issues"
+    "url": "https://github.com/Strimus/react-native-strimus/issues"
   },
-  "homepage": "https://github.com/ozgursagiroglu/react-native-strimus#readme",
+  "homepage": "https://github.com/Strimus/react-native-strimus#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

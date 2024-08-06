@@ -184,8 +184,8 @@ export function addRequiredDeviceCapabilitiesToInfoPlist(
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: 'example',
-  slug: 'example',
+  name: 'react-native-strimus-example',
+  slug: 'react-native-strimus-example',
   orientation: 'portrait',
   icon: './assets/icon.png',
   version: '1.0.0',
@@ -198,7 +198,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   ios: {
     supportsTablet: true,
-    bundleIdentifier: 'strimus.example',
+    bundleIdentifier: 'strimus.rnexample',
     infoPlist: {
       NSCameraUsageDescription: 'This app uses the camera to take photos.',
       NSMicrophoneUsageDescription:
@@ -210,7 +210,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#ffffff',
     },
-    package: 'strimus.example',
+    package: 'strimus.rnexample',
     permissions: [
       'android.permission.CAMERA',
       'android.permission.RECORD_AUDIO',

@@ -1,4 +1,4 @@
-package strimus.example
+package strimus.rnexample
 
 import android.app.Application
 import android.content.res.Configuration
