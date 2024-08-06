@@ -1,8 +1,12 @@
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
+import { startNetworkLogging } from 'react-native-network-logger';
+import RNShake from 'react-native-shake';
+
+startNetworkLogging();
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -14,12 +18,24 @@ export const unstable_settings = {
 
 export default function RootLayout() {
   const [loaded] = useFonts({});
+  const router = useRouter();
 
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
     }
   }, [loaded]);
+
+  useEffect(() => {
+    const subscription = RNShake.addListener(() => {
+      router.push('/logger');
+    });
+
+    return () => {
+      // Your code here...
+      subscription.remove();
+    };
+  }, [router]);
 
   if (!loaded) {
     return null;
@@ -50,6 +66,8 @@ export default function RootLayout() {
           headerShown: false,
         }}
       />
+
+      <Stack.Screen name="logger" />
 
       <Stack.Screen name="+not-found" />
     </Stack>
