@@ -84,11 +84,17 @@ export default function HomeScreen() {
       return Alert.alert('Please enter a unique ID');
     }
 
+    if (!state.token) {
+      return Alert.alert('Please authenticate first');
+    }
+
     try {
       const resp = await fetch(StrimusConfig.API_URL + '/streamer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${StrimusConfig.partnerKey}|${StrimusConfig.partnerSecret}`,
+          'key': StrimusConfig.partnerKey,
         },
         body: JSON.stringify({
           clientId: StrimusConfig.clientId,

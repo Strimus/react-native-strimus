@@ -163,7 +163,7 @@ const BroadcastPage = () => {
           ))}
 
           <TouchableOpacity style={styles.button} onPress={handleCreateStream}>
-            <Text>Create Stream</Text>
+            <Text style={styles.buttonText}>Create Stream</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -214,10 +214,13 @@ export const styles = StyleSheet.create({
   },
   button: {
     paddingVertical: 12,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#000000',
     borderRadius: 8,
     alignItems: 'center',
     marginTop: 36,
+  },
+  buttonText: {
+    color: '#ffffff',
   },
 
   playPauseButton: {

@@ -37,9 +37,9 @@ const AgoraAudiencePlayer = ({ style, stream }: Props, ref: any) => {
    * @name init
    * @description Create, Initialize and setup engine
    */
-  const init = useCallback(async () => {
+  const init = useCallback(() => {
     const { appId } = config;
-    _engine.current = await createAgoraRtcEngine();
+    _engine.current = createAgoraRtcEngine();
     _engine.current.initialize({ appId });
     _engine.current.setChannelProfile(
       ChannelProfileType.ChannelProfileLiveBroadcasting
@@ -59,19 +59,20 @@ const AgoraAudiencePlayer = ({ style, stream }: Props, ref: any) => {
    * @name startCall
    * @description Function to start the call
    */
-  const play = useCallback(async () => {
+  const play = useCallback(() => {
     // Join Channel using null token and channel name
-    await init();
-    await _engine.current?.joinChannel(config.token, config.channelName, 0, {});
+    init();
+    _engine.current?.joinChannel(config.token, config.channelName, 0, {});
   }, [_engine, config, init]);
 
   /**
    * @name endCall
    * @description Function to end the call
    */
-  const end = useCallback(async () => {
+  const end = useCallback(() => {
     _engine.current?.leaveChannel();
     _engine.current?.removeAllListeners();
+
     try {
       _engine.current?.release();
     } catch (e) {
