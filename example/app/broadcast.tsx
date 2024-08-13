@@ -16,7 +16,7 @@ import {
   View,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Stack } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import PauseIcon from '../components/PauseIcon';
 import PlayIcon from '../components/PlayIcon';
@@ -60,17 +60,18 @@ const BroadcastPage = () => {
   }, [state.provider]);
 
   const handleStart = useCallback(async () => {
+    await strimusClient.startStream(state.broadcast?.id ?? 0);
     await playerRef?.current?.play();
 
     setState((prev) => ({
       ...prev,
       isStarted: true,
     }));
-  }, [playerRef]);
+  }, [playerRef, state]);
 
   const handleEnd = useCallback(async () => {
-    await playerRef?.current?.end();
     await strimusClient.stopStream(state.broadcast?.id ?? 0);
+    await playerRef?.current?.end();
 
     setState((prev) => ({
       ...prev,
@@ -117,6 +118,18 @@ const BroadcastPage = () => {
               }));
             }}
           />
+
+          <TouchableOpacity
+            style={[
+              styles.back,
+              {
+                top: 24 + insets.top,
+              },
+            ]}
+            onPress={() => router.back()}
+          >
+            <Text>Back</Text>
+          </TouchableOpacity>
 
           {state.isReady && (
             <TouchableOpacity
@@ -236,5 +249,16 @@ export const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderWidth: 1,
     borderColor: '#999999',
+  },
+  back: {
+    position: 'absolute',
+    top: 24,
+    left: 24,
+    borderRadius: 24,
+    backgroundColor: 'rgba(255,255,255,.5)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
   },
 });

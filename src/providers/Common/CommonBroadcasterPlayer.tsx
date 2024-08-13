@@ -41,10 +41,10 @@ const INITIAL_STATE = {
 };
 
 const VIDEO_CONFIG = {
-  width: Dimensions.get('screen').width,
-  height: Dimensions.get('screen').height,
+  width: 720,
+  height: 1280,
   bitrate: 7500000,
-  targetFrameRate: 60,
+  targetFrameRate: 30,
   keyframeInterval: 2,
   isBFrames: true,
   isAutoBitrate: true,
@@ -186,7 +186,11 @@ const CommonBroadcasterPlayer = (
       style={style}
       rtmpsUrl={broadcast.streamUrl}
       streamKey={broadcast.streamKey}
-      videoConfig={VIDEO_CONFIG}
+      videoConfig={{
+        ...VIDEO_CONFIG,
+        width: (style as any)?.width ?? Dimensions.get('screen').width,
+        height: (style as any)?.height ?? Dimensions.get('screen').height,
+      }}
       audioConfig={AUDIO_CONFIG}
       isMuted={camera.muted}
       isCameraPreviewMirrored={camera.mirror}

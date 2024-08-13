@@ -4748,6 +4748,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"amazon-ivs-react-native-broadcast@https://github.com/ozgursagiroglu/amazon-ivs-react-native-broadcast.git":
+  version: 1.2.1
+  resolution: "amazon-ivs-react-native-broadcast@https://github.com/ozgursagiroglu/amazon-ivs-react-native-broadcast.git#commit=6af3218ad5960e42ce39bec47ec0f51568440cf7"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: fe18c4917a375c14c8feb72270c50050cba04c19746a397ecc31b23470d24ca541b845caaa80a3a7adefe48d31bfebce55f27ffed9979f573525db694213d51b
+  languageName: node
+  linkType: hard
+
 "amazon-ivs-react-native-broadcast@npm:^1.2.1":
   version: 1.2.1
   resolution: "amazon-ivs-react-native-broadcast@npm:1.2.1"
@@ -13691,7 +13701,7 @@ __metadata:
     "@release-it/conventional-changelog": ^5.0.0
     "@types/jest": ^29.5.5
     "@types/react": ^18.2.44
-    amazon-ivs-react-native-broadcast: ^1.2.1
+    amazon-ivs-react-native-broadcast: "https://github.com/ozgursagiroglu/amazon-ivs-react-native-broadcast.git"
     amazon-ivs-react-native-player: ^1.5.0
     commitlint: ^17.0.2
     del-cli: ^5.1.0

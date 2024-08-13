@@ -211,7 +211,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#ffffff',
     },
-    versionCode: 2,
+    versionCode: 3,
     package: 'com.machinarium.strimusrn',
     permissions: [
       'android.permission.CAMERA',

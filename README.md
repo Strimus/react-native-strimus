@@ -151,12 +151,13 @@ const handleCreate = async () => {
 };
 
 const play = async () => {
+  await strimusClient.startStream(broadcast.id);
   await playerRef.current.play();
 };
 
 const end = async () => {
-  await playerRef?.current?.end();
   await strimusClient.stopStream(broadcast.id);
+  await playerRef?.current?.end();
 };
 
 //  You can start broadcasting when the player is ready or with a button.

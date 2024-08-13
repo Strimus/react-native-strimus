@@ -1,6 +1,7 @@
 import {
   forwardRef,
   useCallback,
+  useEffect,
   useImperativeHandle,
   useMemo,
   useRef,
@@ -81,6 +82,12 @@ const AgoraAudiencePlayer = ({ style, stream }: Props, ref: any) => {
 
     setJoined(false);
   }, [_engine]);
+
+  useEffect(() => {
+    if (!isJoined) {
+      play();
+    }
+  }, [play, isJoined]);
 
   useImperativeHandle(
     ref,

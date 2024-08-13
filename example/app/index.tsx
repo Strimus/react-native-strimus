@@ -102,7 +102,7 @@ export default function HomeScreen() {
           secret: StrimusConfig.partnerSecret,
           streamer: {
             uniqueId: +state.uniqueId,
-            name: 'Deneme Yayıncısı',
+            name: `Deneme Yayıncısı ${state.uniqueId}`,
             imageUrl: 'https://picsum.photos/500/500',
             email: 'deneme_*****@denememe.com',
             profileUrl: 'https://linkedin.com/denememe',

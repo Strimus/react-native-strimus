@@ -215,6 +215,25 @@ export class Strimus implements StrimusInterface {
   }
 
   /**
+   * Start a stream
+   * @param id stream id
+   * @returns
+   * @throws {Error} If the request fails
+   * @async
+   *
+   */
+
+  async startStream(id: number) {
+    try {
+      await this._request(`/stream-start/${id}`, {
+        method: 'PUT',
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  /**
    * Stop a stream
    * @param id stream id
    * @returns
