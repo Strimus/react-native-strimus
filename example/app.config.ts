@@ -197,13 +197,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     backgroundColor: '#ffffff',
   },
   ios: {
-    buildNumber: '1.0.2',
+    buildNumber: '1.0.3',
     supportsTablet: true,
     bundleIdentifier: 'com.machinarium.strimusrn',
     infoPlist: {
       NSCameraUsageDescription: 'This app uses the camera to take photos.',
       NSMicrophoneUsageDescription:
         'This app uses the microphone to record audio.',
+      ITSAppUsesNonExemptEncryption: false,
     },
   },
   android: {
