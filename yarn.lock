@@ -4748,16 +4748,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"amazon-ivs-react-native-broadcast@https://github.com/ozgursagiroglu/amazon-ivs-react-native-broadcast.git":
-  version: 1.2.1
-  resolution: "amazon-ivs-react-native-broadcast@https://github.com/ozgursagiroglu/amazon-ivs-react-native-broadcast.git#commit=6af3218ad5960e42ce39bec47ec0f51568440cf7"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: fe18c4917a375c14c8feb72270c50050cba04c19746a397ecc31b23470d24ca541b845caaa80a3a7adefe48d31bfebce55f27ffed9979f573525db694213d51b
-  languageName: node
-  linkType: hard
-
 "amazon-ivs-react-native-broadcast@npm:^1.2.1":
   version: 1.2.1
   resolution: "amazon-ivs-react-native-broadcast@npm:1.2.1"
@@ -13667,6 +13657,7 @@ __metadata:
     "@babel/core": ^7.20.0
     "@expo/metro-runtime": ~3.2.1
     amazon-ivs-react-native-broadcast: ^1.2.1
+    amazon-ivs-react-native-player: ^1.5.0
     expo: ~51.0.24
     expo-constants: ^16.0.2
     expo-font: ^12.0.9
@@ -13685,7 +13676,6 @@ __metadata:
     react-native-screens: 3.31.1
     react-native-shake: ^5.6.2
     react-native-svg: ^15.4.0
-    react-native-video: ^6.4.3
     react-native-web: ~0.19.10
     ts-node: ^10.9.2
   languageName: unknown
@@ -13701,7 +13691,7 @@ __metadata:
     "@release-it/conventional-changelog": ^5.0.0
     "@types/jest": ^29.5.5
     "@types/react": ^18.2.44
-    amazon-ivs-react-native-broadcast: "https://github.com/ozgursagiroglu/amazon-ivs-react-native-broadcast.git"
+    amazon-ivs-react-native-broadcast: ^1.2.1
     amazon-ivs-react-native-player: ^1.5.0
     commitlint: ^17.0.2
     del-cli: ^5.1.0
@@ -13715,7 +13705,6 @@ __metadata:
     react-native-agora: ^4.3.2
     react-native-builder-bob: ^0.29.0
     react-native-nodemediaclient: ^0.3.4
-    react-native-video: ^6.4.3
     release-it: ^15.0.0
     socket.io-client: ^4.7.5
     typescript: ^5.2.2
@@ -13736,16 +13725,6 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 04f5aafa88e5d641df998c195988904760984004ae3d5b16c3313941f2027d85b4d5f9c35ac9d696ee533ccff33f4f3c9b86249ca6fec787ca4895075ee4d9d0
-  languageName: node
-  linkType: hard
-
-"react-native-video@npm:^6.4.3":
-  version: 6.4.3
-  resolution: "react-native-video@npm:6.4.3"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 94ae488505a74c247b847b4fc6afcbfaf0ec0b9adc2a1e19b8637e8c240d4c37e6584ebf368b9dcc6d308c27f6e4e06848181a9dd05ee3a71abb8f3ac786b1f4
   languageName: node
   linkType: hard
 

@@ -11,7 +11,7 @@ npm install react-native-strimus
 ### Install dependencies
 
 ```sh
-npm install amazon-ivs-react-native-broadcast react-native-video react-native-agora
+npm install amazon-ivs-react-native-broadcast amazon-ivs-react-native-player react-native-agora
 ```
 
 and install the pods

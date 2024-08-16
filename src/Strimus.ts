@@ -58,6 +58,7 @@ export class Strimus implements StrimusInterface {
         headers: {
           ...options?.headers,
           'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache',
           ...(this.token
             ? {
                 token: this.token,

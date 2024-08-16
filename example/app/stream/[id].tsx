@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   Dimensions,
   StyleSheet,
@@ -19,6 +19,7 @@ const StreamDetailScreen = () => {
   const [stream, setStream] = useState<StrimusStreamInterface>();
   const insets = useSafeAreaInsets();
   const router = useRouter();
+  const videoRef = useRef<any>(null);
 
   useEffect(() => {
     strimusClient.getStream(String(params.id)).then((data) => {
@@ -43,13 +44,13 @@ const StreamDetailScreen = () => {
   return stream ? (
     <View style={styles.root}>
       <StrimusPlayer
+        ref={videoRef}
         type="audience"
         stream={stream}
         style={{
-          width: Dimensions.get('screen').width,
-          height: Dimensions.get('screen').height,
+          width: Dimensions.get('window').width,
+          height: Dimensions.get('window').height,
         }}
-        onStreamReady={() => {}}
       />
 
       <TouchableOpacity

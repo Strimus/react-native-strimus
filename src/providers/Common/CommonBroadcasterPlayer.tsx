@@ -41,10 +41,8 @@ const INITIAL_STATE = {
 };
 
 const VIDEO_CONFIG = {
-  width: 720,
-  height: 1280,
   bitrate: 7500000,
-  targetFrameRate: 30,
+  targetFrameRate: 60,
   keyframeInterval: 2,
   isBFrames: true,
   isAutoBitrate: true,
@@ -71,6 +69,7 @@ const CommonBroadcasterPlayer = (
   ref: any
 ) => {
   const cameraRef = React.useRef<IIVSBroadcastCameraView>(null);
+  const { width, height } = Dimensions.get('screen');
 
   const [{ readyStatus }, setState] = useState<{
     readonly readyStatus: SessionReadyStatus;
@@ -188,20 +187,18 @@ const CommonBroadcasterPlayer = (
       streamKey={broadcast.streamKey}
       videoConfig={{
         ...VIDEO_CONFIG,
-        width: (style as any)?.width ?? Dimensions.get('screen').width,
-        height: (style as any)?.height ?? Dimensions.get('screen').height,
+        width: Math.min(width, 720),
+        height: Math.min(height, 720),
       }}
       audioConfig={AUDIO_CONFIG}
       isMuted={camera.muted}
-      isCameraPreviewMirrored={camera.mirror}
       cameraPosition={camera.cameraPosition}
+      isCameraPreviewMirrored={camera.mirror}
       cameraPreviewAspectMode={camera.aspectMode}
       onError={onErrorHandler}
       onBroadcastError={onBroadcastErrorHandler}
       onIsBroadcastReady={onIsBroadcastReadyHandler}
-      // onBroadcastAudioStats={onBroadcastAudioStatsHandler}
       onBroadcastStateChanged={onBroadcastStateChangedHandler}
-      // onTransmissionStatisticsChanged={onTransmissionStatisticsChangedHandler}
       onMediaServicesWereLost={onMediaServicesWereLostHandler}
       onMediaServicesWereReset={onMediaServicesWereResetHandler}
       onAudioSessionInterrupted={onAudioSessionInterruptedHandler}

@@ -197,7 +197,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     backgroundColor: '#ffffff',
   },
   ios: {
-    buildNumber: '1.0.1',
+    buildNumber: '1.0.2',
     supportsTablet: true,
     bundleIdentifier: 'com.machinarium.strimusrn',
     infoPlist: {
@@ -211,7 +211,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#ffffff',
     },
-    versionCode: 3,
+    versionCode: 4,
     package: 'com.machinarium.strimusrn',
     permissions: [
       'android.permission.CAMERA',

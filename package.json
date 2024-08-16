@@ -183,11 +183,10 @@
     "version": "0.40.0"
   },
   "dependencies": {
-    "amazon-ivs-react-native-broadcast": "git+https://github.com/ozgursagiroglu/amazon-ivs-react-native-broadcast.git",
+    "amazon-ivs-react-native-broadcast": "^1.2.1",
     "amazon-ivs-react-native-player": "^1.5.0",
     "react-native-agora": "^4.3.2",
     "react-native-nodemediaclient": "^0.3.4",
-    "react-native-video": "^6.4.3",
     "socket.io-client": "^4.7.5"
   },
   "directories": {
