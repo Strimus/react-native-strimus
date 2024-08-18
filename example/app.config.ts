@@ -188,7 +188,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   slug: 'react-native-strimus-example',
   orientation: 'portrait',
   icon: './assets/icon.png',
-  version: '1.0.1',
+  version: '1.0.2',
   scheme: 'myapp',
   userInterfaceStyle: 'light',
   splash: {
@@ -197,7 +197,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     backgroundColor: '#ffffff',
   },
   ios: {
-    buildNumber: '1.0.3',
+    buildNumber: '9',
     supportsTablet: true,
     bundleIdentifier: 'com.machinarium.strimusrn',
     infoPlist: {
@@ -212,7 +212,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#ffffff',
     },
-    versionCode: 4,
+    versionCode: 5,
     package: 'com.machinarium.strimusrn',
     permissions: [
       'android.permission.CAMERA',
