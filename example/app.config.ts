@@ -197,7 +197,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     backgroundColor: '#ffffff',
   },
   ios: {
-    buildNumber: '9',
+    buildNumber: '10',
     supportsTablet: true,
     bundleIdentifier: 'com.machinarium.strimusrn',
     infoPlist: {
