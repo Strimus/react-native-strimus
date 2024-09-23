@@ -56,7 +56,10 @@ import { Strimus, StrimusPlayer } from 'react-native-strimus';
 
 // ...
 
-const strimusClient = new Strimus('KEY');
+const strimusClient = new Strimus('KEY', {
+  url: 'https://example.com',
+  socketUrl: 'https://example.com',
+});
 
 // to access socket
 strimusClient.socket.connect()
@@ -88,13 +91,25 @@ type StrimusPlayerProps = {
 };
 ```
 
-## Fetch All Streams
+## Fetch Live Streams
 
 ```js
 const [streams, setStreams] = useState([]);
 
 useEffect(() => {
-  strimusClient.getStreams('all').then((data) => {
+  strimusClient.getStreams('live').then((data) => {
+    setStreams(data);
+  });
+}, []);
+```
+
+## Fetch Old Streams
+
+```js
+const [streams, setStreams] = useState([]);
+
+useEffect(() => {
+  strimusClient.getStreams('old_stream').then((data) => {
     setStreams(data);
   });
 }, []);

@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -9,8 +9,8 @@ import {
   TextInput,
   Dimensions,
   Alert,
-  Switch,
   Image,
+  RefreshControl,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StrimusConfig } from '../config/strimus';
@@ -20,8 +20,9 @@ import type { StrimusStreamInterface } from 'react-native-strimus';
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
   const router = useRouter();
-  const [streams, setStreams] = useState<StrimusStreamInterface[]>([]);
-  const [showOnlyActive, setShowOnlyActive] = useState<boolean>(false);
+  const [refreshing, setRefreshing] = useState<boolean>(false);
+  const [liveStreams, setLiveStreams] = useState<StrimusStreamInterface[]>([]);
+  const [pastStreams, setPastStreams] = useState<StrimusStreamInterface[]>([]);
   const [state, setState] = useState<{
     token: string;
     uniqueId: string;
@@ -29,18 +30,6 @@ export default function HomeScreen() {
     token: '',
     uniqueId: '',
   });
-
-  const streamsArr = useMemo(() => {
-    return {
-      live: streams.filter(
-        (item) => (showOnlyActive ? item.isActive : true) && item.type === 'new'
-      ),
-      past: streams.filter(
-        (item) =>
-          (showOnlyActive ? item.isActive : true) && item.type === 'old_stream'
-      ),
-    };
-  }, [showOnlyActive, streams]);
 
   const handleAuth = useCallback(async () => {
     if (!state.uniqueId) {
@@ -122,15 +111,35 @@ export default function HomeScreen() {
     }
   }, [state]);
 
-  useEffect(() => {
-    strimusClient.getStreams('all').then((response) => {
-      setStreams(response);
-    });
+  const getStreams = useCallback(async () => {
+    try {
+      setRefreshing(true);
+
+      const [live, past] = await Promise.all([
+        strimusClient.getStreams('live'),
+        strimusClient.getStreams('old_stream'),
+      ]);
+
+      setLiveStreams(live);
+      setPastStreams(past);
+    } catch (error) {
+      throw error;
+    } finally {
+      setRefreshing(false);
+    }
   }, []);
+
+  useEffect(() => {
+    getStreams();
+  }, [getStreams]);
 
   return (
     <View style={styles.root}>
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={getStreams} />
+        }
+      >
         <View
           style={[
             styles.inner,
@@ -178,19 +187,14 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
 
-          <View style={[styles.section, styles.switchContaniner]}>
-            <Text>Show only active streams</Text>
-            <Switch value={showOnlyActive} onValueChange={setShowOnlyActive} />
-          </View>
-
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Live Streams</Text>
 
-            {streamsArr.live.length === 0 ? (
+            {liveStreams.length === 0 ? (
               <Text>There is no live streams</Text>
             ) : (
               <ScrollView horizontal showsHorizontalScrollIndicator>
-                {streamsArr.live.map((stream, index) => (
+                {liveStreams.map((stream, index) => (
                   <TouchableOpacity
                     style={styles.item}
                     key={index}
@@ -222,11 +226,11 @@ export default function HomeScreen() {
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Past Streams</Text>
-            {streamsArr.live.length === 0 ? (
+            {pastStreams.length === 0 ? (
               <Text>There is no past streams</Text>
             ) : (
               <ScrollView horizontal showsHorizontalScrollIndicator>
-                {streamsArr.past.map((stream, index) => (
+                {pastStreams.map((stream, index) => (
                   <TouchableOpacity
                     style={styles.item}
                     key={index}

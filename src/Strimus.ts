@@ -1,4 +1,3 @@
-import { API_URL } from './config/api';
 import { StrimusSocket } from './StrimusSocket';
 import type {
   StrimusBroadcastInterface,
@@ -13,6 +12,8 @@ export class Strimus implements StrimusInterface {
   key: string = '';
   token: string = '';
   uniqueId: string = '';
+  apiURL: string;
+  socketURL: string;
   socket: StrimusSocket;
 
   /**
@@ -21,7 +22,13 @@ export class Strimus implements StrimusInterface {
    * @example
    * const strimus = new Strimus('key');
    */
-  constructor(key: string) {
+  constructor(
+    key: string,
+    api: {
+      url: string;
+      socketUrl: string;
+    }
+  ) {
     if (!key) {
       throw new Error('Key is required');
     }
@@ -29,6 +36,8 @@ export class Strimus implements StrimusInterface {
     console.log(`Initializing Strimus with key ${key}`);
 
     this.key = key;
+    this.apiURL = api.url;
+    this.socketURL = api.socketUrl;
 
     this._request = this._request.bind(this);
     this.getProviders = this.getProviders.bind(this);
@@ -36,7 +45,7 @@ export class Strimus implements StrimusInterface {
     this.getStream = this.getStream.bind(this);
     this.createStream = this.createStream.bind(this);
     this.stopStream = this.stopStream.bind(this);
-    this.socket = new StrimusSocket(key);
+    this.socket = new StrimusSocket(key, this.socketURL);
   }
 
   /**
@@ -53,7 +62,7 @@ export class Strimus implements StrimusInterface {
 
   private async _request(pathname: string, options?: RequestInit) {
     try {
-      const resp = await fetch(`${API_URL}${pathname}`, {
+      const resp = await fetch(`${this.apiURL}${pathname}`, {
         ...options,
         headers: {
           ...options?.headers,
@@ -122,23 +131,13 @@ export class Strimus implements StrimusInterface {
    *  console.error(error);
    * }
    */
-  async getStreams(type: 'live' | 'past' | 'all' = 'all') {
+  async getStreams(type: 'live' | 'old_stream') {
     try {
       const response = (await this._request(
-        '/streams'
+        `/streams?type=${type}`
       )) as StrimusStreamInterface[];
 
-      if (type === 'all') {
-        return response;
-      }
-
-      return response.filter((stream: StrimusStreamInterface) => {
-        if (type === 'past') {
-          return stream.type === 'old_stream';
-        }
-
-        return stream;
-      });
+      return response;
     } catch (error) {
       throw error;
     }

@@ -1,11 +1,11 @@
 import { io, Socket } from 'socket.io-client';
 import type { StrimusSocketInterface } from './types/strimus';
-import { WS_URL } from './config/api';
 
 export class StrimusSocket implements StrimusSocketInterface {
   key: string;
   messageListeners: Function[] = [];
   socket: Socket;
+  socketURL: string;
 
   /**
    * Initialize StrimusSocket
@@ -16,11 +16,12 @@ export class StrimusSocket implements StrimusSocketInterface {
    * strimusClient.socket.connect();
    * ```
    */
-  constructor(key: string) {
+  constructor(key: string, socketURL: string) {
     console.log(`Initializing StrimusSocket with key ${key}`);
 
     this.key = key;
-    this.socket = io(WS_URL, {
+    this.socketURL = socketURL;
+    this.socket = io(this.socketURL, {
       autoConnect: false,
       extraHeaders: {
         partnerkey: key,

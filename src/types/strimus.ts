@@ -11,7 +11,7 @@ export type StrimusStreamProvider = 'aws' | 'agora' | 'erstream' | 'mux';
 
 export type StrimusStreamType = 'audience' | 'broadcaster';
 
-export type StrimusStreamStatus = 'live' | 'past' | 'all';
+export type StrimusStreamStatus = 'live' | 'old_stream';
 
 export type StrimusStreamResolution = 'SD' | 'HD' | 'FHD';
 
@@ -96,6 +96,8 @@ export interface StrimusInterface {
   key: string;
   uniqueId: string;
   token: string;
+  apiURL: string;
+  socketURL: string;
   getProviders: () => Promise<StrimusConfigInterface[]>;
   getStreams: (type: StrimusStreamStatus) => Promise<StrimusStreamInterface[]>;
   getStream: (id: string) => Promise<StrimusStreamInterface>;
