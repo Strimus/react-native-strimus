@@ -46,6 +46,12 @@ target 'example' do
         end
       end
     end
+
+    installer.pods_project.targets.each do |target|
+      if target.name == 'AmazonIVSBroadcast'
+        `xcrun -sdk iphoneos bitcode_strip -r Pods/AmazonIVSBroadcast/AmazonIVSBroadcast.xcframework/ios-arm64/AmazonIVSBroadcast.framework/AmazonIVSBroadcast -o Pods/AmazonIVSBroadcast/AmazonIVSBroadcast.xcframework/ios-arm64/AmazonIVSBroadcast.framework/AmazonIVSBroadcast`
+      end
+    end
   end
 
   post_integrate do |installer|
