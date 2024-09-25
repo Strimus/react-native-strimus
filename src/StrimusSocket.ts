@@ -21,8 +21,11 @@ export class StrimusSocket implements StrimusSocketInterface {
 
     this.key = key;
     this.socketURL = socketURL;
+
     this.socket = io(this.socketURL, {
       autoConnect: false,
+      secure: true,
+      transports: ['websocket'],
       extraHeaders: {
         partnerkey: key,
       },
@@ -36,6 +39,8 @@ export class StrimusSocket implements StrimusSocketInterface {
     this.sendMessage = this.sendMessage.bind(this);
 
     this.socket.on('message', this._onMessage);
+    this.socket.on('connect', this._onConnected);
+    this.socket.on('disconnect', this._onDisconnected);
   }
 
   /**
@@ -67,9 +72,19 @@ export class StrimusSocket implements StrimusSocketInterface {
   }
 
   _onMessage(message: string) {
+    console.log('Received message:', message);
+
     this.messageListeners.forEach((listener) => {
       listener(message);
     });
+  }
+
+  _onConnected() {
+    console.log('Connected to socket');
+  }
+
+  _onDisconnected() {
+    console.log('Disconnected from socket');
   }
 
   /**
